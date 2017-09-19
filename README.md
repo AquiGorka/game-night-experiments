@@ -2,10 +2,15 @@
 
 - Only one game? Pacman? Any games out there with NSA?
 
+
 ## Dev
 
 ```sh
+npm start
 ```
+
+Open up a browser to http://localhost:3000
+
 
 ## Run Simulation
 
@@ -13,7 +18,10 @@
 npm run sim-gn
 ```
 
-## Game Night
+Open up a browser to http://localhost:9966 and look into the development console
+
+
+### Game Night
 
 ```javascript
 const gn = new GameNight()
@@ -34,7 +42,7 @@ Can remove players (in case they leave before game night ends).
 Can set players as inactive (maybe they are preparing drinks/dinner and you simply want to skip over them but not remove them).
 
 
-## Tournament
+### Tournament
 
 ```javascript
 const tournament = new Tournament()
@@ -48,7 +56,7 @@ Receives N players when they join and sets up the matches between them in a last
 When a match ends it will award 1 point to the winner.
 
 
-## Match
+### Match
 
 ```javascript
 const match = new Match({})
@@ -66,7 +74,8 @@ Rules:
 
 - If a player gets disconnected the game pauses.
 
-## Game
+
+### Game
 
 ```javascript
 ```
@@ -74,7 +83,8 @@ Rules:
 Multiplayer Tetris: 2 players at a time face off in survival mode tetris (last person standing wins).
 It'll receive a callback to execute when the game ends.
 
-## Game Night Client
+
+### Game Night Client
 
 ```javascript
 ```
