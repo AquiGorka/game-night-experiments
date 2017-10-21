@@ -1,6 +1,12 @@
-# Game Night Multiplayer Tetris
+# Game Night Experiments
 
-- Only one game? Pacman? Any games out there with NSA?
+This library provides an abstraction on top of games. This abstraction can be used to host game night events. A host sets up an event and people join in using their smartphones. Game Night needs at least two players to start.
+
+Once the required players have joined a tournament can start. The tournament consists of matches between two players. The players that wins the match will stay and the next person (if there is one) in the list will play against them and so on, until game night ends.
+
+The tournament showcases a leaderboard. Each time a participant wins a match they will receive one point.
+
+The library is ready to skip matches or skip players in a match in case it is needed (connectivity issues?) and can handle reconnections (it is not expected that the guests keep their phone unlocked even while they're not playing).
 
 
 ## Dev
@@ -9,87 +15,29 @@
 npm start
 ```
 
-Open up a browser to http://localhost:3000
+Open up a browser to http://localhost:3000. The url accepts a parameter (`/room`) to define the _room_ where Game Night will be hosted (this is used to namespace game nights - defaults to `gn`).
+
+
+## Run GN Clients Simulation
+
+If you need peers to connect to game night.
+
+```sh
+npm run sim-app-gn
+```
+
+Open up a browser to http://localhost:9966 and look into the development console. The url accepts parameters to set the _room_ where game night is being hosted (`?gid=XXX`), to set the number of players to connect (`?n=XXX`) and the offset (`?o=XXX`) - when players connect they send their unique ids, thus the offset is used to connect players that have not connected before.
 
 
 ## Run Simulation
+
+This will be integrated into tests.
 
 ```sh
 npm run sim-gn
 ```
 
-Open up a browser to http://localhost:9966 and look into the development console
+Open up a browser to http://localhost:9966 and look into the development console. The url accepts parameters to set the _room_ where game night is being hosted (`?gid=XXX`) and to set the number of players to run the simulation with (`?n=XXX`).
 
 
-### Game Night
-
-```javascript
-const gn = new GameNight()
-gn.on('start', id => { /* game night has officially started now we accept players */ })
-gn.id
-gn.on('join', playerInstance => { /* new player joined */ })
-gn.players
-gn.remove(playerId)
-gn.bench(playerId)
-gn.end()
-
-player.on('disconnect', () => { /* player is not connected */ })
-player.on('connect', () => { /* player is connected */ })
-```
-
-Accepts all incoming players at any given time. Knows how to differentiate players so if they disconect and reconnect it is invisible.
-Can remove players (in case they leave before game night ends).
-Can set players as inactive (maybe they are preparing drinks/dinner and you simply want to skip over them but not remove them).
-
-
-### Tournament
-
-```javascript
-const tournament = new Tournament()
-tournament.leaderboard
-tournament.currentMatch
-tournament.on('matchEnd', () => { /* next match awards point to winner */ })
-tournament.on('matchSkip', () => { /* next match no point awarded */ })
-```
-
-Receives N players when they join and sets up the matches between them in a last player that won stays.
-When a match ends it will award 1 point to the winner.
-
-
-### Match
-
-```javascript
-const match = new Match({})
-match.end(playerId)
-match.skip()
-
-const game1 = new Game(player1)
-const game2 = new Game(player2)
-
-game1.start()
-game2.start()
-```
-
-Rules:
-
-- If a player gets disconnected the game pauses.
-
-
-### Game
-
-```javascript
-```
-
-Multiplayer Tetris: 2 players at a time face off in survival mode tetris (last person standing wins).
-It'll receive a callback to execute when the game ends.
-
-
-### Game Night Client
-
-```javascript
-```
-
-Logs in.
-Joins a game night.
-When it is the player's turn to play, well, the player plays (sends commands to the game in order to survive).
 
