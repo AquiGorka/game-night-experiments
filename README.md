@@ -2,7 +2,7 @@
 
 This library provides an abstraction on top of games. This abstraction can be used to host game night events. A host sets up an event and people join in using their smartphones. Game Night needs at least two players to start.
 
-Once the required players have joined a tournament can start. The tournament consists of matches between two players. The players that wins the match will stay and the next person (if there is one) in the list will play against them and so on, until game night ends.
+Once the required players have joined a tournament can start. The tournament consists of matches between two players. The player that wins the match will stay and the next person (if there is one) in the list will play against them and so on, until game night ends.
 
 The tournament showcases a leaderboard. Each time a participant wins a match they will receive one point.
 
