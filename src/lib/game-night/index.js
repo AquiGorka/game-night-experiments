@@ -1,7 +1,6 @@
 import EventEmitter from 'eventemitter3'
 import Peer from 'peerjs'
 import config from '../../../config'
-import queryString from 'query-string'
 import randomString from 'randomstring'
 
 const randomGameNightId = () => {
