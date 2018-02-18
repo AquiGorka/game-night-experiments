@@ -158,9 +158,9 @@ class Login extends Component {
 }
 
 class App extends Component {
-  
+
   state = { auth: null }
-  
+
   render() {
     return <Router>
       <Switch>
